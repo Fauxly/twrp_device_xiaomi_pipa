@@ -5,6 +5,5 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-add_lunch_combo twrp_pipa-user
-add_lunch_combo twrp_pipa-userdebug
-add_lunch_combo twrp_pipa-eng
+export ALLOW_MISSING_DEPENDENCIES=true
+export LC_ALL=C

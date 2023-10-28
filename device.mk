@@ -12,6 +12,10 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
+	
+# API
+PRODUCT_SHIPPING_API_LEVEL := 33
+PRODUCT_TARGET_VNDK_VERSION := 33
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
