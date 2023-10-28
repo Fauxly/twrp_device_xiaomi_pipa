@@ -16,7 +16,7 @@ $(call inherit-product, vendor/omni/config/common.mk)
 $(call inherit-product, device/xiaomi/pipa/device.mk)
 
 PRODUCT_DEVICE := pipa
-PRODUCT_NAME := omni_pipa
+PRODUCT_NAME := twrp_pipa
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := 23043RP34G
 PRODUCT_MANUFACTURER := xiaomi
