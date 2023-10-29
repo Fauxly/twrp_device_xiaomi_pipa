@@ -20,10 +20,11 @@ PRODUCT_TARGET_VNDK_VERSION := 32
 # A/B
 ENABLE_VIRTUAL_AB := true
 
-# Boot Control HAL
+# Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.1-impl-qti.recovery \
-    bootctrl.kona.recovery
+    android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.0-service
+    bootctrl.kona
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
