@@ -22,8 +22,3 @@ PRODUCT_MODEL := 23043RP34G
 PRODUCT_MANUFACTURER := xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-google
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="arrow_pipa-userdebug 13 TP1A.221005.003 eng.lynnri.20221011.025357 release-keys"
-
-BUILD_FINGERPRINT := Xiaomi/arrow_pipa/nabu:13/TP1A.221005.003/lynnrin10110253:userdebug/release-keys
