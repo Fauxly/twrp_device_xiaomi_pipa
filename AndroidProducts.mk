@@ -6,9 +6,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_pipa.mk
+    $(LOCAL_DIR)/omni_pipa.mk
 
 COMMON_LUNCH_CHOICES := \
-    twrp_pipa-user \
-    twrp_pipa-userdebug \
-    twrp_pipa-eng
+    omni_pipa-user \
+    omni_pipa-userdebug \
+    omni_pipa-eng

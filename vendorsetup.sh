@@ -5,5 +5,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-export ALLOW_MISSING_DEPENDENCIES=true
-export LC_ALL=C
+add_lunch_combo omni_pipa-user
+add_lunch_combo omni_pipa-userdebug
+add_lunch_combo omni_pipa-eng
