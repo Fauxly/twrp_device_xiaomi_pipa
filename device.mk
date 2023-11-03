@@ -110,7 +110,6 @@ PRODUCT_PACKAGES += \
     fastbootd
 	
 TARGET_RECOVERY_DEVICE_MODULES += \
-    libandroidicu \
     libdisplayconfig.qti \
     libion \
     vendor.display.config@1.0 \
