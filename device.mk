@@ -6,28 +6,30 @@
 #
 
 LOCAL_PATH := device/xiaomi/pipa
-
-# Dynamic Partitions
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-
-# Fastbootd
-TW_INCLUDE_FASTBOOTD := true
-
-# API
-PRODUCT_TARGET_VNDK_VERSION := 31
-PRODUCT_SHIPPING_API_LEVEL := 30
-
 # A/B
-ENABLE_VIRTUAL_AB := true
+AB_OTA_POSTINSTALL_CONFIG += \
+    RUN_POSTINSTALL_system=true \
+    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+    FILESYSTEM_TYPE_system=ext4 \
+    POSTINSTALL_OPTIONAL_system=true
 
-# Boot Control HAL
+# Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.1-impl-qti \
-    android.hardware.boot@1.1-impl-qti.recovery \
-    android.hardware.boot@1.1-service \
-    bootctrl.kona \
-    bootctrl.kona.recovery 
+    android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.0-service
 
-# Soong namespaces
-PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+PRODUCT_PACKAGES += \
+    bootctrl.kona
+
+PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+    bootctrl.kona \
+    libgptutils \
+    libz \
+    libcutils
+
+PRODUCT_PACKAGES += \
+    otapreopt_script \
+    cppreopts.sh \
+    update_engine \
+    update_verifier \
+    update_engine_sideload
