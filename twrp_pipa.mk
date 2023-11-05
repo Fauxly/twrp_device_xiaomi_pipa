@@ -26,8 +26,8 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := pipa
-PRODUCT_NAME := twrp_elish
+PRODUCT_NAME := twrp_pipa
 PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := M2105K81AC
+PRODUCT_MODEL := 23043RP34G
 PRODUCT_MANUFACTURER := Xiaomi
 #PRODUCT_RELEASE_NAME := Xiaomi Pad 6
