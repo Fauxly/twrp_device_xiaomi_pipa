@@ -156,8 +156,5 @@ TARGET_USES_LOGD := true
 # Haptics
 TW_NO_HAPTICS := true
 
-# Kernel modules
-TW_LOAD_VENDOR_MODULES := "exfat.ko"
-
 # Serialno
 TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
