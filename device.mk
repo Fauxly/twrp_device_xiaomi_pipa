@@ -98,14 +98,22 @@ TW_EXCLUDE_TWRPAPP := true
 #Properties
 TW_OVERRIDE_SYSTEM_PROPS := \
     "ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental"
+	
+RECOVERY_LIBRARY_SOURCE_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so
 
 # Boot control
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.1-impl-qti \
-    android.hardware.boot@1.1-impl-qti.recovery \
-    android.hardware.boot@1.1-service \
-    bootctrl.kona \
-    bootctrl.kona.recovery 
+    android.hardware.boot@1.2-impl \
+    android.hardware.boot@1.2-service \
+    android.hardware.boot@1.2-impl-wrapper.recovery \
+    android.hardware.boot@1.2-impl-wrapper \
+    android.hardware.boot@1.2-impl.recovery \
+    bootctrl.$(PRODUCT_PLATFORM) \
+    bootctrl.$(PRODUCT_PLATFORM).recovery \
+    libgptutils \
+    libz \
+    libcutils
     
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
@@ -115,11 +123,7 @@ PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.0-impl-mock \
     fastbootd
     
-TARGET_RECOVERY_DEVICE_MODULES += \
-	libion
-
-TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-	$(TARGET_OUT_SHARED_LIBRARIES)/libion.so
+TARGET_RECOVERY_DEVICE_MODULES += libion bootctrl.$(TARGET_BOARD_PLATFORM).recovery
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
