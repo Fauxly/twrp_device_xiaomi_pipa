@@ -15,6 +15,6 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_nabu.mk
+    $(LOCAL_DIR)/twrp_pipa.mk
 
-COMMON_LUNCH_CHOICES := twrp_nabu-eng
+COMMON_LUNCH_CHOICES := twrp_pipa-eng

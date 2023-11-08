@@ -35,15 +35,15 @@ ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
 # Bootloader
-PRODUCT_PLATFORM := msmnile
-TARGET_BOOTLOADER_BOARD_NAME := msmnile
+PRODUCT_PLATFORM := kona
+TARGET_BOOTLOADER_BOARD_NAME := kona
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 
 # Platform
-TARGET_BOARD_PLATFORM := msmnile
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno640
-QCOM_BOARD_PLATFORMS += msmnile
+TARGET_BOARD_PLATFORM := kona
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno650
+QCOM_BOARD_PLATFORMS += kona
 
 # Kernel
 # abl will use vendor_boot cmdline

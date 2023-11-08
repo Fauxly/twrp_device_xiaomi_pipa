@@ -1,6 +1,6 @@
-ro.product.vendor.marketname=Xiaomi Pad 5
-ro.product.board=nabu
-ro.board.platform=msmnile
+ro.product.vendor.marketname=Xiaomi Pad 6
+ro.product.board=pipa
+ro.board.platform=kona
 sys.usb.controller=a600000.dwc3
 sys.usb.rndis.func.name=rndis_bam
 sys.usb.rmnet.func.name=rmnet_bam
