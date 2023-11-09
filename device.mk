@@ -22,9 +22,6 @@ TARGET_SCREEN_DENSITY := 360
 PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/opensource/commonsys-intf/display
 
-PRODUCT_PACKAGES += \
-    qcom_decrypt \
-    qcom_decrypt_fbe
 
 PRODUCT_SHIPPING_API_LEVEL := 30
 
@@ -61,7 +58,7 @@ TW_INCLUDE_RESETPROP := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_DEFAULT_BRIGHTNESS := 1200
-#TW_Y_OFFSET := -520
+TW_W_OFFSET := -520
 #TW_H_OFFSET := -91
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
