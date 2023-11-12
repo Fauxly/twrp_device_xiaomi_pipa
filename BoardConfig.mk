@@ -19,18 +19,16 @@ ALLOW_MISSING_DEPENDENCIES := true
 
 # Architecture
 TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-2a
+TARGET_ARCH_VARIANT := armv8-2a-dotprod
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := generic
-TARGET_CPU_VARIANT_RUNTIME := kryo300
+TARGET_CPU_VARIANT := cortex-a76
 
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv8-2a
+TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := generic
-TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a75
+TARGET_2ND_CPU_VARIANT := cortex-a76
 
 TARGET_SUPPORTS_64_BIT_APPS := true
 ENABLE_CPUSETS := true
@@ -49,7 +47,7 @@ QCOM_BOARD_PLATFORMS += kona
 
 # Kernel
 # abl will use vendor_boot cmdline
-#BOARD_KERNEL_CMDLINE := ttyMSM0,115200n8 earlycon=msm_geni_serial,0xa90000 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 androidboot.usbcontroller=a600000.dwc3 androidboot.selinux=permissive
+#BOARD_KERNEL_CMDLINE := console=tty0,115200n8 androidboot.hardware=qcom androidboot.console=tty0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 androidboot.usbcontroller=a600000.dwc3 buildvariant=user
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_BOOT_HEADER_VERSION := 3
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
@@ -136,36 +134,3 @@ BOARD_USES_QCOM_FBE_DECRYPTION := true
 BOARD_USES_METADATA_PARTITION := true
 
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
-
-# TWRP Configuration
-TW_THEME := portrait_hdpi
-ifeq ($(TW_DEVICE_VERSION),)
-TW_DEVICE_VERSION=13.0
-endif
-RECOVERY_SDCARD_ON_DATA := true
-BOARD_HAS_NO_REAL_SDCARD := true
-TARGET_RECOVERY_QCOM_RTC_FIX := true
-TW_EXCLUDE_DEFAULT_USB_INIT := true
-TW_EXTRA_LANGUAGES := true
-TW_INCLUDE_NTFS_3G := true
-TARGET_USES_MKE2FS := true
-TW_USE_TOOLBOX := true
-TW_INPUT_BLACKLIST := "hbtp_vm"
-TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
-TW_MAX_BRIGHTNESS := 2047
-TW_DEFAULT_BRIGHTNESS := 200
-TW_SCREEN_BLANK_ON_BOOT := true
-TW_EXCLUDE_APEX := true
-TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone1/temp"
-TW_BATTERY_SYSFS_WAIT_SECONDS := 5
-
-# Debug
-TWRP_INCLUDE_LOGCAT := true
-TARGET_USES_LOGD := true
-
-# Haptics
-TW_NO_HAPTICS := true
-
-# Serialno
-TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
-
