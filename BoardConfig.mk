@@ -14,67 +14,49 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/xiaomi/pipa
-
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
 # Architecture
 TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-2a
+TARGET_ARCH_VARIANT := armv8-2a-dotprod
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := cortex-a75
-
+TARGET_CPU_VARIANT := cortex-a76
 
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv8-2a
+TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a75
+TARGET_2ND_CPU_VARIANT := cortex-a76
 
 TARGET_SUPPORTS_64_BIT_APPS := true
-
 ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
-# Build
-BUILD_BROKEN_DUP_RULES := true
-
 # Bootloader
+PRODUCT_PLATFORM := kona
 TARGET_BOOTLOADER_BOARD_NAME := kona
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
-
-# Custom ROM asserts
-TARGET_OTA_ASSERT_DEVICE := pipa
 
 # Platform
 TARGET_BOARD_PLATFORM := kona
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno650
 QCOM_BOARD_PLATFORMS += kona
-TARGET_USES_HARDWARE_QCOM_BOOTCTRL := true
 
 # Kernel
 # abl will use vendor_boot cmdline
-#BOARD_KERNEL_CMDLINE := console=tty0,115200n8 androidboot.hardware=qcom androidboot.console=tty0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 androidboot.usbcontroller=a600000.dwc3
-
-BOARD_KERNEL_BASE := 0x00000000
+#BOARD_KERNEL_CMDLINE := console=tty0,115200n8 androidboot.hardware=qcom androidboot.console=tty0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 androidboot.usbcontroller=a600000.dwc3 buildvariant=user
 BOARD_KERNEL_IMAGE_NAME := Image
-BOARD_KERNEL_PAGESIZE := 4096
-BOARD_KERNEL_SEPARATED_DTBO := true
-#KERNEL_LD := LD=ld.lld
-TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_HEADER_ARCH := arm64
-
 BOARD_BOOT_HEADER_VERSION := 3
-BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
-
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
-#BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt/dtb
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
-#BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt/dtb
+#TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
+BOARD_KERNEL_SEPARATED_DTBO := true
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 
 # Avb
 BOARD_AVB_ENABLE := true
@@ -88,13 +70,13 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flag 3
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144
 BOARD_BOOTIMAGE_PARTITION_SIZE := 134217728
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 134217728
 
 # Dynamic Partition
 BOARD_SUPER_PARTITION_SIZE := 9126805504
-BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm system system_ext vendor product
-BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9122611200 # BOARD_SUPER_PARTITION_SIZE - 4MB
-
+BOARD_SUPER_PARTITION_GROUPS := xiaomi_dynamic_partitions
+BOARD_XIAOMI_DYNAMIC_PARTITIONS_SIZE := 9122611200
+BOARD_XIAOMI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext vendor #mi_ext
 BOARD_ROOT_EXTRA_FOLDERS := bluetooth dsp firmware persist
 BOARD_SUPPRESS_SECURE_ERASE := true
 
@@ -129,7 +111,7 @@ AB_OTA_PARTITIONS += \
     vbmeta_system
 
 ENABLE_VIRTUAL_AB := true
-#TARGET_IS_VAB := true
+TARGET_IS_VAB := true
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -146,9 +128,10 @@ AB_OTA_POSTINSTALL_CONFIG += \
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_USES_RECOVERY_AS_BOOT := true
-TARGET_NO_RECOVERY := true
 
 # Crypto
 BOARD_USES_QCOM_FBE_DECRYPTION := true
 BOARD_USES_METADATA_PARTITION := true
+
+BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 
