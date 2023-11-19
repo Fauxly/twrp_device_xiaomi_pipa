@@ -1,34 +1,29 @@
 #
-# Copyright 2018 The Android Open Source Project
+# Copyright (C) 2023 The Android Open Source Project
+# Copyright (C) 2023 SebaUbuntu's TWRP device tree generator
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# SPDX-License-Identifier: Apache-2.0
 #
 
-# Release name
-PRODUCT_RELEASE_NAME := pipa
-DEVICE_PATH := device/xiaomi/pipa
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+# Inherit some common Omni stuff.
+$(call inherit-product, vendor/omni/config/common.mk)
 
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/twrp/config/common.mk)
-
-# Inherit device configuration
+# Inherit from pipa device
 $(call inherit-product, device/xiaomi/pipa/device.mk)
 
-## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := pipa
-PRODUCT_NAME := twrp_pipa
+PRODUCT_NAME := omni_pipa
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := 23043RP34G
-PRODUCT_MANUFACTURER := Xiaomi
+PRODUCT_MANUFACTURER := xiaomi
+
+PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DESC="pipa_global-user 13 RKQ1.211001.001 V14.0.8.0.TMZMIXM release-keys"
+
+BUILD_FINGERPRINT := Xiaomi/pipa_global/pipa:13/RKQ1.211001.001/V14.0.8.0.TMZMIXM:user/release-keys
