@@ -14,7 +14,6 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_pipa.mk
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/twrp_pipa.mk
 
 COMMON_LUNCH_CHOICES := twrp_pipa-eng
