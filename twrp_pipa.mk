@@ -21,6 +21,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Inherit device configuration
+$(call inherit-product, device/xiaomi/pipa/device.mk)
+
+# Inherit device configuration
 
 PRODUCT_DEVICE := pipa
 PRODUCT_NAME := twrp_pipa
