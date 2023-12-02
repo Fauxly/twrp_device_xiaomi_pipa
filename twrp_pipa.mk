@@ -1,32 +1,33 @@
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+# Copyright (C) 2023 The Android Open Source Project
+# Copyright (C) 2023 SebaUbuntu's TWRP device tree generator
 #
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# SPDX-License-Identifier: Apache-2.0
 #
 
 # Release name
 PRODUCT_RELEASE_NAME := pipa
-DEVICE_PATH := device/xiaomi/pipa
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+# 引用默认的编译配置文件，core_64_bit必须先于其他引用，否则不生效
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/twrp/config/common.mk)
+# Enable virtual A/B OTA
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
-# Inherit device configuration
+# Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+
+# Inherit from pipa device
 $(call inherit-product, device/xiaomi/pipa/device.mk)
 
-# Inherit device configuration
+# Inherit some common TWRP stuff.
+$(call inherit-product, vendor/twrp/config/common.mk)
 
+# Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := pipa
 PRODUCT_NAME := twrp_pipa
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := 23043RP34G
-PRODUCT_MANUFACTURER := xiaomi
+PRODUCT_MANUFACTURER := Xiaomi
+#PRODUCT_RELEASE_NAME := Xiaomi Pad 6

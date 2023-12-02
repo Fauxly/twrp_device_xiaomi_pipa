@@ -817,6 +817,7 @@
 		<string name="sha2_chk">使用 SHA2 進行雜湊</string>
 		<string name="disabled">未啟用</string>
 		<string name="enabled">已啟用</string>
+		<string name="keep_storage_data">恢復儲存時保留現有檔案</string>
 		<string name="zip_compatible_err">Zip Treble 相容性錯誤!</string>
 
 		<string name="unmount_sys_install">安裝Zip前解除安裝系統分割槽</string>
@@ -1243,5 +1244,12 @@
 		<string name="reflash_twrp">安裝當前使用的 OrangeFox</string>
 		<string name="reflashing_twrp">正在安裝 OrangeFox...</string>
 		<string name="reflash_twrp_complete">安裝 OrangeFox 已完成</string>
+		<string name="auto_disable_avb2">刷入 ROM 後自動禁用 AVB2.0</string>
+		<string name="disable_avb2">禁用 AVB2.0</string>
+		<string name="disable_avb2_confirm">是否禁用 AVB2.0？</string>
+		<string name="disabling_AVB2">正在禁用 AVB2.0...</string>
+		<string name="disabling_AVB2_complete">禁用 AVB2.0 完成！</string>
+		<string name="disable_avb2_success_msg">禁用AVB2.0：處理 '{1}' 成功。</string>
+		<string name="disable_avb2_fail_msg">禁用AVB2.0：處理 '{1}' 失敗！</string>
 	</resources>
 </language>
